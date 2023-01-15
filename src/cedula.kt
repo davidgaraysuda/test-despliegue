@@ -1,14 +1,17 @@
 import kotlin.reflect.typeOf
 
 fun main(){
-    println("testDig"+ " "+testDig())
+    //println("testDig"+ " "+testDig())
     //println(sumDig(cedula))
-    println("testSumDig"+ " "+testSumDig())
-    println("testValidDig"+ " "+testValidDig())
+    //println("testSumDig"+ " "+testSumDig())
+    //println("testValidDig"+ " "+testValidDig())
+    println(IsValidNuiNumber("0106425762"))
+
 }
 
 val cedula= arrayListOf<Int>(0,1,0,6,1,4,0,0,4)
 var sum=0
+
 fun sumDig(cedula:ArrayList<Int>):Int{
     for((i,v) in cedula.withIndex()){
         if(i%2==0){
@@ -32,13 +35,30 @@ fun multiplicar(dig:Int, cof:Int):Int{
     return res
 }
 
-fun validDig(ult:Int):Boolean{
+
+fun validDig(ult:Int):Int{
     var newUlt=0
     if((sum%10)>0){
         newUlt=10-(sum%10)
     }
     return newUlt
 }
+
+
+fun validDig(ult:Int):Int{
+    var ultdig=0
+    if((sum%10)>0){
+        ultdig=10-(sum%10)
+    }
+    return ultdig
+}
+
+fun IsValidNuiNumber (nui:String): Boolean {
+    val arrNui=nui.substring(0,8)
+    val dig=nui.substring(9).toInt()
+    val ultDig=sumDig(arrNui.split(""))
+    return validDig(ultDig)==dig
+    }
 
 fun testDig():Boolean{
     val esp=5
